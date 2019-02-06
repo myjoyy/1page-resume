@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.20/css/uikit.min.css" />
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        html {
+            font-weight: 300 !important;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .uk-h1,
+        .uk-h2,
+        .uk-h3,
+        .uk-h4,
+        .uk-h5,
+        .uk-h6,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 300;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        article {
+            border: solid 1px #e5e5e5;
+        }
+
+        #google-container {
+            width: 100%;
+            background-color: $background;
+
+            @include MQ(M) {
+                height: 300px;
+            }
+
+            @include MQ(L) {
+                height: 600px;
+            }
+        }
+
+        #cd-google-map {
+            position: relative;
+
+        }
+        }
+
+        #cd-zoom-in,
+        #cd-zoom-out {
+            height: 32px;
+            width: 32px;
+            cursor: pointer;
+            margin-left: 10px;
+            background-color: rgba($color-2, .9);
+            background-repeat: no-repeat;
+            background-size: 32px 64px;
+            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-controller.svg');
+
+            .no-touch &:hover {
+                background-color: rgba($color-2, 1);
+            }
+
+            @include MQ(M) {
+                margin-left: 50px;
+            }
+        }
+
+        #cd-zoom-in {
+            background-position: 50% 0;
+            margin-top: 10px;
+            margin-bottom: 1px;
+
+            @include MQ(M) {
+                margin-top: 50px;
+            }
+        }
+
+        #cd-zoom-out {
+            background-position: 50% -32px;
+        }
+
+    </style>
+</head>
+
+<body class="uk-overflow-auto uk-inline">
+    <div class="uk-position-top-right uk-position-large uk-hidden@s" style="z-index:995;">
+        <a class="uk-icon uk-margin-small-top" uk-icon="icon:menu;ratio:1.5;" uk-toggle="target: #offcanvas-flip"></a>
+    </div>
+
+
+
+    <div class="uk-grid-collapse uk-grid-match" uk-grid>
+
+        <div class="uk-width-1-5@l uk-width-1-4@m uk-width-1-3@s uk-visible@s">
+            <div class="uk-background-muted uk-height-viewport uk-inline" uk-sticky>
+                <div class="uk-position-center">
+                    <div class="uk-width-small uk-height-small uk-background-secondary uk-border-circle"></div>
+                    <ul class="uk-nav uk-nav-primary uk-text-center uk-margin-medium-top" uk-switcher="connect: .switcher-container;animation: uk-animation-fade">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Experience</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Skills</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="uk-position-bottom-center uk-position-large">
+                    <a href="" class="uk-icon-button" uk-icon="icon:twitter; ratio:1.5"></a>
+                    <a href="" class="uk-icon-button" uk-icon="icon:github-alt; ratio:1.5"></a>
+                    <a href="" class="uk-icon-button" uk-icon="icon:uikit; ratio:1.5"></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="uk-width-expand" style="z-index:990;">
+
+            <div class="uk-inline">
+                <ul class="uk-switcher switcher-container uk-margin-remove">
+
+                    <li class="">
+                        <div class="uk-position-center">
+                            <div class="uk-width-1-1  uk-text-center">
+                                <h1 class="uk-heading-hero">Your Name</h1>
+                                <h4 class="uk-margin-remove">Web Developer / UI Designer / Internet Magican</h4>
+                                <hr class="uk-divider-small uk-margin-small-top">
+                                <div class="uk-flex uk-flex-center">
+                                    <div class="uk-width-medium uk-height-medium uk-background-secondary uk-border-circle"></div>
+                                </div>
+                                <h4 class="uk-text-lead uk-text-center uk-margin-xlarge-left uk-margin-xlarge-right">
+                                    Lorem
+                                    ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.</h4>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="uk-container uk-container-expand uk-margin-top">
+                            <h1 class="uk-heading-primary">My Expirience</h1>
+                            <div class="uk-grid-small uk-flex uk-flex-middle uk-flex-center uk-child-width-expand@l uk-margin-medium-top"
+                                uk-grid>
+                                <div class="">
+                                    <div class="uk-background-muted uk-padding-small uk-height-small uk-flex uk-text-left uk-flex-middle">
+                                        <ul class="uk-subnav uk-margin-remove" uk-switcher="connect: .expirience;animation: uk-animation-slide-bottom">
+                                            <li>
+                                                <a href="#" class="uk-button uk-button-text">
+                                                    <span class="uk-h4">Project 01</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="uk-button uk-button-text">
+                                                    <span class="uk-h4">Project 02</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="uk-button uk-button-text">
+                                                    <span class="uk-h4">Project 03</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="uk-grid-collapse uk-margin-small-top" uk-grid>
+
+                                        <div class="uk-width-small@l">
+
+                                            <ul class="uk-switcher expirience uk-margin-remove">
+                                                <li>
+                                                    <div class="uk-background-secondary uk-padding uk-light uk-height-small uk-flex uk-flex-middle uk-flex-center">
+                                                        <h1 class="uk-heading-primary uk-margin-remove">01.</h1>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="uk-background-secondary uk-padding uk-light uk-height-small uk-flex uk-flex-middle uk-flex-center">
+                                                        <h1 class="uk-heading-primary uk-margin-remove">02.</h1>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="uk-background-secondary uk-padding uk-light uk-height-small uk-flex uk-flex-middle uk-flex-center">
+                                                        <h1 class="uk-heading-primary uk-margin-remove">03.</h1>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+
+                                        </div>
+                                        <div class="uk-width-expand@l">
+                                            <div class=" uk-padding-small uk-height-medium">
+                                                <ul class="uk-switcher expirience uk-margin-remove">
+                                                    <li>
+                                                        <h1 class="uk-article-title">Project 01.</h1>
+                                                        <p class="uk-h4">
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                                            sed do eiusmod tempor incididunt ut labore et dolore magna
+                                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                                            ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                        </p>
+                                                    </li>
+                                                    <li>
+                                                        <h1 class="uk-article-title">Project 02.</h1>
+                                                        <p class="uk-h4">
+                                                            Duis aute irure dolor in reprehenderit in voluptate velit
+                                                            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                                                            occaecat cupidatat non proident, sunt in culpa qui officia
+                                                            deserunt mollit anim id est laborum.
+                                                        </p>
+                                                    </li>
+                                                    <li>
+                                                        <h1 class="uk-article-title">Project 03.</h1>
+                                                        <p class="uk-h4">
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                                            sed do eiusmod tempor incididunt ut labore et dolore magna
+                                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                                            ullamco laboris nisi ut aliquip.
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <ul class="uk-switcher expirience uk-margin-remove">
+                                        <li>
+                                            <div class="uk-background-secondary uk-height-large uk-light uk-margin-xlarge-top uk-cover-container">
+                                                <img src="https://images.unsplash.com/photo-1546349851-c7bf30ca3c29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+                                                    alt="" class="uk-transform-origin-top-center uk-height-1-1 uk-width-1-1"
+                                                    uk-scrollspy="cls: uk-animation-kenburns; repeat: true">
+                                            </div>
+                                            <button class="uk-button uk-button-secondary uk-button-large uk-margin-small-top uk-float-right">More...</button>
+                                        </li>
+                                        <li>
+                                            <div class="uk-background-secondary uk-height-large uk-light uk-margin-xlarge-top uk-cover-container">
+                                                <img src="https://images.unsplash.com/photo-1546370688-1dda36355dee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1462&q=80"
+                                                    alt="" class="uk-animation-reverse uk-height-1-1 uk-width-1-1"
+                                                    uk-scrollspy="cls: uk-animation-kenburns; repeat: true">
+                                            </div>
+                                            <button class="uk-button uk-button-secondary uk-button-large uk-margin-small-top uk-float-right">More...</button>
+                                        </li>
+                                        <li>
+                                            <div class="uk-background-secondary uk-height-large uk-light uk-margin-xlarge-top uk-cover-container">
+                                                <img src="https://images.unsplash.com/photo-1545769392-290199b65c80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+                                                    alt="" class="uk-animation-reverse uk-transform-origin-bottom-left uk-height-1-1 uk-width-1-1"
+                                                    uk-scrollspy="cls: uk-animation-kenburns; repeat: true">
+                                            </div>
+                                            <button class="uk-button uk-button-secondary uk-button-large uk-margin-small-top uk-float-right">More...</button>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="uk-position-bottom-left uk-position-large uk-position uk-margin-large-bottom">
+                                <ul class="uk-switcher expirience uk-margin-remove uk-visible@m">
+                                    <li>
+                                        <h1 class="uk-heading-hero">Project Name</h1>
+                                    </li>
+                                    <li>
+                                        <h1 class="uk-heading-hero">Project Name</h1>
+                                    </li>
+                                    <li>
+                                        <h1 class="uk-heading-hero">Project Name</h1>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-container uk-container-expand uk-margin-top">
+                            <h1 class="uk-heading-primary">My Education</h1>
+                            <div class="uk-flex uk-flex-column uk-margin-large-top">
+                                <article class="uk-article uk-width-2-3@l uk-padding-small uk-margin-small">
+                                    <h1 class="uk-article-title"><a class="uk-link-reset uk-text-uppercase" href="">School</a></h1>
+                                    <p class="uk-article-meta">1995 - 2003.
+                                        Lorem Ipsum</p>
+                                    <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </article>
+                                <article class="uk-article uk-width-2-3@l uk-padding-small uk-margin-small">
+                                    <h1 class="uk-article-title"><a class="uk-link-reset uk-text-uppercase" href="">...
+                                            Hight School</a></h1>
+                                    <p class="uk-article-meta">1995 - 2003.
+                                        Lorem Ipsum</p>
+                                    <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </article>
+                                <article class="uk-article uk-width-2-3@l uk-padding-small uk-margin-small">
+                                    <h1 class="uk-article-title"><a class="uk-link-reset uk-text-uppercase" href="">UNIVERSITY
+                                            OF ...</a></h1>
+                                    <p class="uk-article-meta">1995 - 2003.
+                                        Lorem Ipsum</p>
+                                    <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-container uk-container-expand uk-margin-top">
+                            <h1 class="uk-heading-primary">My Skills</h1>
+                            <div class="uk-width-1-1 uk-child-width-expand@s uk-margin-xlarge-top" uk-grid>
+                                <div>
+                                    <h1 class="uk-heading-bullet">Front-end Development</h1>
+                                    <article class="uk-article uk-padding-small uk-margin-small">
+                                        <p class="uk-text-lead uk-margin-remove-bottom">HTML</p>
+                                        <progress class="uk-progress uk-margin-remove" value="90" max="100"></progress>
+                                    </article>
+                                    <article class="uk-article uk-padding-small uk-margin-small">
+                                        <p class="uk-text-lead uk-margin-remove-bottom">CSS</p>
+                                        <progress class="uk-progress uk-margin-remove" value="90" max="100"></progress>
+                                    </article>
+                                    <article class="uk-article uk-padding-small uk-margin-small">
+                                        <p class="uk-text-lead uk-margin-remove-bottom">JS</p>
+                                        <progress class="uk-progress uk-margin-remove" value="90" max="100"></progress>
+                                    </article>
+                                </div>
+                                <div>
+                                    <h1 class="uk-heading-bullet">Back-end Development</h1>
+                                    <article class="uk-article uk-padding-small uk-margin-small">
+                                        <p class="uk-text-lead uk-margin-remove-bottom">PHP</p>
+                                        <progress class="uk-progress uk-margin-remove" value="10" max="100"></progress>
+                                    </article>
+                                    <article class="uk-article uk-padding-small uk-margin-small">
+                                        <p class="uk-text-lead uk-margin-remove-bottom">NODE</p>
+                                        <progress class="uk-progress uk-margin-remove" value="20" max="100"></progress>
+                                    </article>
+                                    <article class="uk-article uk-padding-small uk-margin-small">
+                                        <p class="uk-text-lead uk-margin-remove-bottom">API</p>
+                                        <progress class="uk-progress uk-margin-remove" value="30" max="100"></progress>
+                                    </article>
+                                    <article class="uk-article uk-padding-small uk-margin-small">
+                                        <p class="uk-text-lead uk-margin-remove-bottom">OTHER THINGS</p>
+                                        <progress class="uk-progress uk-margin-remove" value="40" max="100"></progress>
+                                    </article>
+                                    <article class="uk-article uk-padding-small uk-margin-small">
+                                        <p class="uk-text-lead uk-margin-remove-bottom">THAT MAKE</p>
+                                        <progress class="uk-progress uk-margin-remove" value="50" max="100"></progress>
+                                    </article>
+                                    <article class="uk-article uk-padding-small uk-margin-small">
+                                        <p class="uk-text-lead uk-margin-remove-bottom">THESE GUYS</p>
+                                        <progress class="uk-progress uk-margin-remove" value="60" max="100"></progress>
+                                    </article>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </li>
+                    <li>
+                        <section id="cd-google-map">
+                            <div id="google-container" class="uk-height-viewport uk-overflow-hidden"></div>
+                            <div id="cd-zoom-in"></div>
+                            <div id="cd-zoom-out"></div>
+                        </section>
+                        <div class="uk-position-center-left uk-position-large uk-overlay uk-overlay-primary uk-width-1-3@m uk-width-5-6"
+                            style="height:65vh;">
+                            <h1 class="uk-text-center">Contact Me</h1>
+                            <div class="uk-flex uk-flex-column uk-position-center uk-width-4-5 uk-margin-medium-top">
+                                <div class="uk-card uk-card-body">
+                                    <p><span class="uk-text-large">Email: </span><span class="uk-h4 uk-light">
+                                            my.email@mydomain.com</span></p>
+                                </div>
+                                <div class="uk-card uk-card-body">
+                                    <span class="uk-text-large">Phone: </span><span class="uk-h4 uk-light"> +1 234
+                                        567890</span>
+                                </div>
+                                <div class="uk-card uk-card-body uk-margin-top">
+                                    <span class="uk-text-large">Adress: </span><span class="uk-h4 uk-light"> Evergreen
+                                        st. 28,<br>Saint-Petersburg, Russia</span>
+                                </div>
+                                <div class="uk-card uk-card-body uk-margin-top uk-light">
+                                    <div class="uk-inline uk-width-1-1"><a class="uk-form-icon uk-form-icon-flip uk-icon"
+                                            href="#" uk-icon="mail"></a>
+                                        <input class="uk-input uk-background-secondary" type="email" placeholder="Your email"
+                                            required="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div id="offcanvas-flip" uk-offcanvas="flip: true;overlay: true">
+        <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+
+            <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical" uk-switcher="connect: .switcher-container;animation: uk-animation-fade">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Expirience</a></li>
+                <li><a href="#">Education</a></li>
+                <li><a href="#">Skills</a></li>
+                <li><a href="#">Contact</a></li>
+                <li class="uk-nav-divider uk-margin-bottom"></li>
+                <a href="" class="uk-icon-button" uk-icon="icon:twitter; ratio:1.5"></a>
+                <a href="" class="uk-icon-button" uk-icon="icon:github-alt; ratio:1.5"></a>
+                <a href="" class="uk-icon-button" uk-icon="icon:uikit; ratio:1.5"></a>
+            </ul>
+
+        </div>
+    </div>
+    </div>
+    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.9/gmaps.min.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            //set your google maps parameters
+            var $latitude = 51.5255069,
+                $longitude = -0.0836207,
+                $map_zoom = 14;
+
+            //google map custom marker icon - .png fallback for IE11
+            var is_internetExplorer11 = navigator.userAgent.toLowerCase().indexOf('trident') > -1;
+            var $marker_url = (is_internetExplorer11) ?
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-location.png' :
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-location_1.svg';
+
+            //define the basic color of your map, plus a value for saturation and brightness
+            var $main_color = '#2d313f',
+                $saturation = -20,
+                $brightness = 5;
+
+            //we define here the style of the map
+            var style = [{
+                    //set saturation for the labels on the map
+                    elementType: "labels",
+                    stylers: [{
+                        saturation: $saturation
+                    }]
+                },
+                { //poi stands for point of interest - don't show these lables on the map 
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [{
+                        visibility: "off"
+                    }]
+                },
+                {
+                    //don't show highways lables on the map
+                    featureType: 'road.highway',
+                    elementType: 'labels',
+                    stylers: [{
+                        visibility: "off"
+                    }]
+                },
+                {
+                    //don't show local road lables on the map
+                    featureType: "road.local",
+                    elementType: "labels.icon",
+                    stylers: [{
+                        visibility: "off"
+                    }]
+                },
+                {
+                    //don't show arterial road lables on the map
+                    featureType: "road.arterial",
+                    elementType: "labels.icon",
+                    stylers: [{
+                        visibility: "off"
+                    }]
+                },
+                {
+                    //don't show road lables on the map
+                    featureType: "road",
+                    elementType: "geometry.stroke",
+                    stylers: [{
+                        visibility: "off"
+                    }]
+                },
+                //style different elements on the map
+                {
+                    featureType: "transit",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "poi",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "poi.government",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "poi.sport_complex",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "poi.attraction",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "poi.business",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "transit",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "transit.station",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "landscape",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+
+                },
+                {
+                    featureType: "road",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "road.highway",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                },
+                {
+                    featureType: "water",
+                    elementType: "geometry",
+                    stylers: [{
+                            hue: $main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: $brightness
+                        },
+                        {
+                            saturation: $saturation
+                        }
+                    ]
+                }
+            ];
+
+            //set google map options
+            var map_options = {
+                center: new google.maps.LatLng($latitude, $longitude),
+                zoom: $map_zoom,
+                panControl: false,
+                zoomControl: false,
+                mapTypeControl: false,
+                streetViewControl: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: false,
+                styles: style,
+            }
+            //inizialize the map
+            var map = new google.maps.Map(document.getElementById('google-container'), map_options);
+            //add a custom marker to the map				
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng($latitude, $longitude),
+                map: map,
+                visible: true,
+                icon: $marker_url,
+            });
+
+            //add custom buttons for the zoom-in/zoom-out on the map
+            function CustomZoomControl(controlDiv, map) {
+                //grap the zoom elements from the DOM and insert them in the map 
+                var controlUIzoomIn = document.getElementById('cd-zoom-in'),
+                    controlUIzoomOut = document.getElementById('cd-zoom-out');
+                controlDiv.appendChild(controlUIzoomIn);
+                controlDiv.appendChild(controlUIzoomOut);
+
+                // Setup the click event listeners and zoom-in or out according to the clicked element
+                google.maps.event.addDomListener(controlUIzoomIn, 'click', function () {
+                    map.setZoom(map.getZoom() + 1)
+                });
+                google.maps.event.addDomListener(controlUIzoomOut, 'click', function () {
+                    map.setZoom(map.getZoom() - 1)
+                });
+            }
+
+            var zoomControlDiv = document.createElement('div');
+            var zoomControl = new CustomZoomControl(zoomControlDiv, map);
+
+            //insert the zoom div on the top left of the map
+            map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
+        });
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.20/js/uikit.min.js" integrity="sha256-2vL3vDc2j7XdT1qgHvWPSCmULPhJ6q0bLlPIgPXFQPI="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.20/js/uikit-icons.min.js" integrity="sha256-eQPdtNjxSg+WO2RwUfv5Jb/ZSlCIfsH6umy+Q9Fpuk0="
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
